@@ -1,0 +1,75 @@
+<md-content layout="row" layout-align="center center" flex class="md-padding" id="home-content">
+    <div class="section" id="home" layout="row" layout-align="left center">
+
+
+    <md-sidenav flex="20" class="md-sidenav-left md-whiteframe-z2" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')">
+        <div layout="column" layout-align="top">
+          <md-list style="y-overflow: scroll;">
+            <md-toolbar md-scroll-y class="md-whiteframe-z4" id="calorie_queue_header">
+                <h1 layout-align="left" class="md-toolbar-tools">TODAY'S MENU</h1>
+            </md-toolbar>
+            <div layout="column" flex="15">
+                <h5 style="margin:2px; font-weight: normal;">{{viewedProfileInfo.name}}</h5>
+            </div>
+              <div layout="row" style="padding:10px 0px;" ng-show="hasBreakfast != 1">
+                <div layout="column" flex="85">
+                    <h4 style="margin:10px;" ><b>BREAKFAST</b></h4>
+                    <md-divider></md-divider>
+
+                    <div ng-repeat="b in breakfastList">
+                        <ng-md-icon icon="clear" style="fill: white" size="50px"></ng-md-icon>
+                        <h5 style="margin:10px;">{{b.food_name}} - {{b.food_cat}}</h5>
+                      <h5 style="margin:10px;">Calories: {{b.food_cal}}</h5>
+                    </div>
+                </div>
+              </div>
+
+              <div layout="row" style="padding:10px 0px;" ng-show="hasLunch != 1">
+                <div layout="column" flex="85">
+                    <h4 style="margin:10px;" ><b>LUNCH</b></h4>
+                    <md-divider></md-divider>
+
+                    <div ng-repeat="l in lunchList">
+                      <h5 style="margin:10px;">{{l.food_name}} - {{l.food_cat}}</h5>
+                      <h5 style="margin:10px;">Calories: {{l.food_cal}}</h5>
+                    </div>
+                </div>
+              </div>
+
+              <div layout="row" style="padding:10px 0px;" ng-show="hasDinner != 1">
+                <div layout="column" flex="85">
+                    <h4 style="margin:10px;" ><b>DINNER</b></h4>
+                    <md-divider></md-divider>
+
+                    <div ng-repeat="d in dinnerList">
+                      <h5 style="margin:10px;">{{d.food_name}} - {{d.food_cat}}</h5>
+                      <h5 style="margin:10px;">Calories: {{d.food_cal}}</h5>
+                    </div>
+                </div>
+              </div>
+
+              <div layout="row" style="padding:10px 0px;" ng-show="hasSnack != 1">
+                <div layout="column" flex="85">
+                    <h4 style="margin:10px;" ><b>SNACK</b></h4>
+                    <md-divider></md-divider>
+
+                    <div ng-repeat="s in snackList">
+                      <h5 style="margin:10px;">{{s.food_name}} - {{s.food_cat}}</h5>
+                      <h5 style="margin:10px;">Calories: {{s.food_cal}}</h5>
+                    </div>
+                </div>
+              </div>
+          </md-list>
+        </div>
+    </md-sidenav>
+
+    <div flex="80" id="color_wheel" layout="row" layout-align="center center">
+        <div id="dashboard-home-grid" layout="row">
+            <div id="dashboard_button_1" class="dashboard-button" ng-click="showFoodForm($event)">
+                <h3>ADD A FOOD</h3>
+                <img src="http://i.imgur.com/mcMZ8dM.png"/>
+            </div>
+        </div>
+    </div>
+
+</md-content>
