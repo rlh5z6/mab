@@ -1,0 +1,43 @@
+<md-dialog aria-label="test">
+    <form name="addFoodForm">
+        <md-dialog-content>
+             <div class="template_dialog">
+                <md-toolbar md-scroll-y class="md-whiteframe-z4" layout="row">
+                    <h1 id="profileDisplayName" layout-align="left" class="md-toolbar-tools">ADD A FOOD</h1>
+                </md-toolbar>
+                <div layout="column" style="height:280px;">
+                    <section layout="column" flex>
+                        <md-input-container>
+                            <label>FOOD ITEM</label>
+                            <input type="text" ng-model="food.name" ng-required="true"/>
+                        </md-input-container>
+
+                        <md-input-container>
+                            <label>CALORIES</label>
+                            <input type="number" ng-model="food.calories" ng-required="true"/>
+                        </md-input-container>
+                        
+                        <md-input-container>
+                          <md-select placeholder="CATEGORY" aria-label="food_category" ng-model="food.category" ng-required="true">
+                              <md-option ng-repeat="category in foodCategories" value="{{category}}">{{category}}</md-option>
+                          </md-select>
+                        </md-input-container>
+
+                        <md-input-container>
+                          <md-select placeholder="MEAL" aria-label="meal" ng-model="food.meal" ng-required="true">
+                              <md-option ng-repeat="option in mealOptions" value="{{option}}">{{option}}</md-option>
+                          </md-select>
+                        </md-input-container>
+                </div>
+                <div layout="column">
+                    <md-button class="md-accent" ng-click="saveFood(food.name, food.category, food.meal, food.calories)">SAVE</md-button>
+                </div>
+
+                    </section>
+
+                </div>
+            </div>
+
+        </md-dialog-content>
+    </form>
+</md-dialog>
