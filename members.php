@@ -46,7 +46,7 @@
           <button type="submit" class="btn" name="searchButton"><span class="fui-search"></span></button>
         </span>
       </div>
-        
+    
     </form>   
 
     <?php
