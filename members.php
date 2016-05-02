@@ -24,6 +24,7 @@
                 <ul class="nav navbar-nav navbar-right">
                 <li><a href="./members.php">Members</a></li>
                 <li><a href="./trips.php">Trips</a></li>
+                <li><a href="./sites.php">Sites</a></li>
                 </ul>
                
             </div><!-- /.navbar-collapse -->
@@ -45,7 +46,7 @@
           <button type="submit" class="btn" name="searchButton"><span class="fui-search"></span></button>
         </span>
       </div>
-        
+    
     </form>   
 
     <?php
