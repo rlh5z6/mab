@@ -36,31 +36,20 @@
     
 </head>
 <body>
+    
     <br>
     <br>
     <div class="container">
-
-        
-    <form method="POST" class="navbar-form navbar-right" action="trips.php" role="search">
-        <div class="input-group">
-        <input class="form-control" name="searchTxt" id="navbarInput-01" type="search" placeholder="Search by Trip Name">
+  
+    <form method="POST" class="navbar-form navbar-right" action="sites.php" role="search">
+      <div class="input-group">
+        <input class="form-control" name="searchTxt" id="navbarInput-01" type="search" placeholder="Search">
         <span class="input-group-btn">
           <button type="submit" class="btn" name="searchButton"><span class="fui-search"></span></button>
         </span>
-        </div>      
-      <select class="form-control select select-primary" name="season" data-toggle="select">
-        <option default>Season</option>
-        <option value="Spring">Spring</option>
-        <option value="Winter">Winter</option>
-        <option value="Fall Weekend">Fall Weekend</option>
-        <option value="Spring Weekend">Spring Weekend</option>
-        <option value="Thanksgiving">Thanksgiving</option>
-        <option value="International">International</option>
-      </select>
-    
+      </div>
         
     </form>   
-
     <?php
 	//Check to make sure the Search button is pushed
 	if(isset($_POST['searchButton']))
@@ -81,33 +70,24 @@
         
 
 		$searchText = $_POST['searchTxt'];
-        $season = $_POST['season'];
-        $searchText = strtoupper($searchText);
-        
+        echo "{$searchText}";
        
 
-        $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, mi.pawprint, mi.firstName, mi.LastName, tm.siteLeaderFlag
-                                FROM trip t, member_info mi, trip_member tm
-                                WHERE t.tripID = tm.tripID
-                                AND tm.pawprint = mi.pawprint
-                                AND t.tripName = ?
-                                AND t.season = ?
-                                ORDER BY tm.siteLeaderFlag DESC");
-        $stmt->bind_param("ss", $searchText, $season);
+        $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, h.housingID, h.siteName
+                                FROM trip t, housing h
+                                WHERE t.housingID = h.housingID
+                                AND t.tripName = ?");
+        $stmt->bind_param("s", $searchText);
         $stmt->execute();
-        $stmt->bind_result($tripID, $tripName, $season, $year, $pawprint, $firstName, $lastName, $siteLeaderFlag);
+        $stmt->bind_result($tripID, $tripName, $season, $year, $housingID, $siteName);
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
             echo "<h5>{$searchText}</h5>";
             echo "<table class='table table-bordered table-striped'>";
-            echo "<th>NAME</th><th>PAWPRINT</th><th>MEMBER STATUS</th>";
+            echo "<th>TRIP</th><th>SEASON - YEAR</th><th>HOUSING</th>";
                 while ($stmt->fetch()) {
                     echo "<tr>";
-                    if ($siteLeaderFlag == 1)
-                        $siteLeaderFlag = "Site Leader";
-                    else
-                        $siteLeaderFlag = "Participant";
-                    echo "<td>{$firstName} {$lastName}</td><td>{$pawprint}</td><td>{$siteLeaderFlag}</td>";
+                    echo "<td>{$tripName}</td><td>{$season} - {$year}</td><td>{$siteName}</td>";
                     echo "</tr>";
                 }
             echo "</table>";
@@ -121,9 +101,5 @@
     ?>
    </div>
 <br>
-    
-    
-    
-    
-    </body>
+</body>
 </html>
