@@ -79,20 +79,20 @@
         $searchText = strtoupper($searchText);
         
         $searchTextTemp = $searchText . '%';
-        $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, h.housingID, h.siteName
+        $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.focus, h.housingID, h.siteName
                                 FROM trip t, housing h
                                 WHERE t.housingID = h.housingID
                                 AND t.city LIKE ?");
         $stmt->bind_param("s", $searchTextTemp);
         $stmt->execute();
-        $stmt->bind_result($tripID, $tripName, $season, $year, $city, $state, $housingID, $siteName);
+        $stmt->bind_result($tripID, $tripName, $season, $year, $city, $state, $focus, $housingID, $siteName);
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
             echo "<table class='table table-bordered table-striped'>";
-            echo "<th>TRIP</th><th>LOCATION</th><th>SEASON</th><th>YEAR</th><th>HOUSING</th>";
+            echo "<th>TRIP</th><th>LOCATION</th><th>SERVICE FOCUS</th><th>SEASON</th><th>YEAR</th><th>HOUSING</th>";
                 while ($stmt->fetch()) {
                     echo "<tr>";
-                    echo "<td>{$tripName}</td><td>{$city}, {$state}</td><td>{$season}</td><td>{$year}</td><td>{$siteName}</td>";
+                    echo "<td>{$tripName}</td><td>{$city}, {$state}</td><td>{$focus}</td><td>{$season}</td><td>{$year}</td><td>{$siteName}</td>";
                     echo "</tr>";
                 }
             echo "</table>";
