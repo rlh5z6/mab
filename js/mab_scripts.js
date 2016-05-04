@@ -25,7 +25,7 @@ function showProfile(tripID){
 
 function data(tripID){
     $.ajax({
-        url: '/ajax/tripData.php',
+        url: './ajax/tripData.php',
         type: 'GET',
         data: 'tripID='+tripID,
         success: function(data) {
@@ -67,7 +67,7 @@ function data(tripID){
 
 function housing(housingID){
     $.ajax({
-        url: '/ajax/tripHousing.php',
+        url: './ajax/tripHousing.php',
         type: 'GET',
         data: 'housingID='+housingID,
         success: function(data) {
@@ -92,7 +92,7 @@ function housing(housingID){
 
 function contact(contactID) {
     $.ajax({
-        url: '/ajax/contact.php',
+        url: './ajax/contact.php',
         type: 'GET',
         data: 'contactID='+contactID,
         success: function(data) {
@@ -112,7 +112,7 @@ function contact(contactID) {
     
 function siteLeader(tripID) {
     $.ajax({
-        url: '/ajax/siteLeader.php',
+        url: './ajax/siteLeader.php',
         type: 'GET',
         data: 'tripID='+tripID,
         success: function(data) {
