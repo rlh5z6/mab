@@ -779,8 +779,6 @@ fieldset[disabled] .btn-default.active {
 .btn-primary.active,
 .open > .dropdown-toggle.btn-primary {
   color: #ffffff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -1782,8 +1780,6 @@ select[multiple].input-group-sm > .select2-search input[type="text"] {
 .open > .dropdown-toggle.form-group.focus .input-group-btn .btn-default,
 .open > .dropdown-toggle.input-group.focus .input-group-btn .btn-default {
   color: #ffffff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
 }
 .form-group.focus .input-group-btn .btn-default:active,
 .input-group.focus .input-group-btn .btn-default:active,
@@ -2422,7 +2418,6 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 }
 .ui-slider-handle:hover,
 .ui-slider-handle:focus {
-  background-color: #48c9b0;
   outline: none;
 }
 .ui-slider-handle:active {
@@ -2721,9 +2716,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
     border-bottom: 2px solid #dfe2e5;
     border-radius: 6px 0 0;
   }
-  .pagination > .btn:first-child.btn-primary {
-    border-bottom-color: #48c9b0;
-  }
+ 
   .pagination > .btn:first-child.btn-danger {
     border-bottom-color: #ec7063;
   }
@@ -2754,9 +2747,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
     top: 0;
     border-radius: 0 6px 0 0;
   }
-  .pagination > .btn + ul + .btn.btn-primary {
-    border-bottom-color: #48c9b0;
-  }
+  
   .pagination > .btn + ul + .btn.btn-danger {
     border-bottom-color: #ec7063;
   }
@@ -3440,8 +3431,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .select-primary .select2-choice:focus,
 .select-primary .select2-choice:active {
   color: #ffffff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
+  
 }
 .select-primary .select2-choice:active {
   background: #2980B9;
@@ -3755,9 +3745,7 @@ fieldset[disabled] .input-group-btn .btn-default.active {
 .select2-container-multi.multiselect-primary .select2-search-choice {
   background-color: #2980B9;
 }
-.select2-container-multi.multiselect-primary .select2-search-choice:hover {
-  background-color: #48c9b0;
-}
+
 .select2-container-multi.multiselect-info {
   border-color: #3498db;
 }
@@ -4723,8 +4711,6 @@ fieldset[disabled] .navbar-default .btn-link:focus {
 .navbar-inverse .navbar-form .btn.active,
 .open > .dropdown-toggle.navbar-inverse .navbar-form .btn {
   color: #ffffff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
 }
 .navbar-inverse .navbar-form .btn:active,
 .navbar-inverse .navbar-form .btn.active,
@@ -4795,8 +4781,6 @@ fieldset[disabled] .navbar-inverse .navbar-form .btn.active {
 .navbar-inverse .navbar-btn.active,
 .open > .dropdown-toggle.navbar-inverse .navbar-btn {
   color: #ffffff;
-  background-color: #48c9b0;
-  border-color: #48c9b0;
 }
 .navbar-inverse .navbar-btn:active,
 .navbar-inverse .navbar-btn.active,
