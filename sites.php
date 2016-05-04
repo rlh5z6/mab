@@ -3,6 +3,10 @@
 <head>
 	<title>MAB Member Database</title>
 <link rel="icon" href="./img/mab_logo.png">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+
+<script src="./js/mab_scripts.js"></script>
+<?php include('tripProfile.html'); ?>
 <!-- Latest compiled and minified CSS -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
@@ -83,39 +87,48 @@
         $searchTextTemp = $searchText . '%';
         
         if ($search == 'City') {
-            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.focus, h.housingID, h.siteName
-                                FROM trip t, housing h
-                                WHERE t.housingID = h.housingID
-                                AND t.city LIKE ?");
+            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.country, t.county, t.focus
+                                FROM trip t
+                                WHERE t.city LIKE ?
+                                ORDER BY t.season, t.tripName");
         }
         else if ($search == 'State') {
-            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.focus, h.housingID, h.siteName
-                                FROM trip t, housing h
-                                WHERE t.housingID = h.housingID
-                                AND t.state LIKE ?");
+            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.country, t.county, t.focus
+                                FROM trip t
+                                WHERE t.state LIKE ?
+                                ORDER BY t.season, t.tripName");
         }
         else if ($search == 'Service Focus') {
-            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.focus, h.housingID, h.siteName
-                                FROM trip t, housing h
-                                WHERE t.housingID = h.housingID
-                                AND t.focus LIKE ?");
+            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.country, t.county, t.focus
+                                FROM trip t
+                                WHERE t.focus LIKE ?
+                                ORDER BY t.focus, t.season, t.tripName");
         }
         else {
-            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.focus, h.housingID, h.siteName
-                                FROM trip t, housing h
-                                WHERE t.housingID = h.housingID
-                                AND t.city LIKE ?");
+            $stmt = $conn->prepare("SELECT t.tripID, t.tripName, t.season, t.year, t.city, t.state, t.country, t.county, t.focus
+                                FROM trip t                                
+                                AND t.city LIKE ?
+                                ORDER BY t.season, t.tripName");
         }
         $stmt->bind_param("s", $searchTextTemp);
         $stmt->execute();
-        $stmt->bind_result($tripID, $tripName, $season, $year, $city, $state, $focus, $housingID, $siteName);
+        $stmt->bind_result($tripID, $tripName, $season, $year, $city, $state, $country, $county, $focus);
         $stmt->store_result();
         if ($stmt->num_rows > 0) {
             echo "<table class='table table-bordered table-striped'>";
-            echo "<th>TRIP</th><th>LOCATION</th><th>SERVICE FOCUS</th><th>SEASON</th><th>YEAR</th><th>HOUSING</th>";
+            echo "<th>TRIP</th><th>LOCATION</th><th>SERVICE FOCUS</th><th>SEASON</th><th>YEAR</th><th></th>";
                 while ($stmt->fetch()) {
                     echo "<tr>";
-                    echo "<td>{$tripName}</td><td>{$city}, {$state}</td><td>{$focus}</td><td>{$season}</td><td>{$year}</td><td>{$siteName}</td>";
+                    if ($season == 'International') {
+                        $location = $city.", ".$country;
+                    }
+                    else if ($season == 'Fall Weekend' || $season == 'Spring Weekend') {
+                        $location = $county." County, ".$state;
+                    }
+                    else {
+                        $location = $city.", ".$state;   
+                    }
+                    echo "<td>{$tripName}</td><td>{$location}</td><td>{$focus}</td><td>{$season}</td><td>{$year}</td><td><button type='button' class='btn btn-primary btn-sm' data-toggle='modal' onclick='showProfile({$tripID})'>Show</button></td>";
                     echo "</tr>";
                 }
             echo "</table>";
@@ -128,6 +141,7 @@
     }
     ?>
    </div>
-<br>
+
+    
 </body>
 </html>

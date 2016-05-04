@@ -1,0 +1,105 @@
+<script src="./js/mab_scripts.js"></script>
+<link rel="stylesheet" href="./dist/css/mab.css">
+
+<form name="trip_info" method="post" action="#">
+    <div class="modal fade bs-example-modal-md" id="trip_info" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                
+                <div class="modal-header" id="tripProfileHeader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="tripName"></h4>
+                </div>
+                
+                <div class="modal-body">
+                    <div id="modal_content">
+                        
+                    
+                    
+                    <div class="tabbable"> <!-- Only required for left/right tabs -->
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#details" data-toggle="tab">Trip Details</a></li>
+                        <li><a href="#service" data-toggle="tab">Service</a></li>
+                        <li><a href="#housing" data-toggle="tab">Housing</a></li>
+                    </ul>
+                    <br>
+                    <div class="tab-content">
+                    
+                    <div class="tab-pane active" id="details">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <label for="location">LOCATION
+                                <p id="tripLocation" value="location"></p>
+                            </label><br>
+                            <label for="season">SEASON
+                                <p id="tripTime" value="season"></p>
+                            </label><br>
+                            
+                            
+                        </div>
+                         <div class="col-sm-4">
+                            <label for="focus">SERVICE FOCUS
+                                <p id="tripFocus" value="focus"></p>
+                            </label><br>
+                            
+                        </div>
+                        <div class="col-sm-4">
+                            
+                            <label for="siteLeaderName">SITE LEADERS
+                                <p id="siteLeaderName1" value="siteLeaderName" style="margin: 0 0 0 0;"></p>
+                                <p id="siteLeaderName2" value="siteLeaderName"></p>
+                            </label><br>
+                        </div>
+                       
+                    </div>
+                    </div>
+                    
+                    <div class="tab-pane" id="service">
+                        <p>Data 2.</p>
+                    </div>
+                    
+                    <div class="tab-pane" id="housing">
+                    <div class="row">
+                        <div class="col-sm-5 col-sm-offset-1">
+                            <label for="housingAddress"><b>HOUSING INFORMATION</b>
+                                <label for="siteName">SITE NAME
+                                    <p id="housingName" value="siteName"></p>
+                                </label><br>
+                                <label for="housingAddress">ADDRESS
+                                    <p id="housingStreetAddress" value="housingAddress" style="margin: 0 0 0 0;"></p>
+                                    <p id="housingAddress" value="housingAddress"></p>
+                                </label><br>
+                                <label for="website">WEBSITE
+                                    <p id="housingWebsite" value="website"></p>
+                                </label><br>
+                            </label>
+                        </div>
+                        <div class="col-sm-5 col-sm-offset-1">
+                            <label for="housingAddress"><b>CONTACT INFORMATION</b>
+                                <label for="contactInfo">NAME
+                                    <p id="housingContactName" value="contactInfo"></p>
+                                </label><br>
+                                <label for="phoneNum">PHONE NUMBER
+                                    <p id="housingContactNumber" value="phoneNum"></p>
+                                </label><br>
+                                <label for="email">EMAIL ADDRESS
+                                    <p id="housingContactEmail" value="email"></p>
+                                </label><br>
+                            </label>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
+                
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</form>
